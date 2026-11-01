@@ -1,10 +1,10 @@
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import AgglomerativeClustering
+from sklearn.metrics import silhouette_score
 from scipy.cluster.hierarchy import linkage, dendrogram
 
 df = pd.read_csv("Adult Census Income Dataset.csv")
@@ -82,3 +82,5 @@ print("\nCluster-wise Mean:")
 print(
     result.groupby('Cluster')[features].mean()
 )
+
+print("\nSilhouette Score:", round(silhouette_score(X_scaled, labels), 4))
